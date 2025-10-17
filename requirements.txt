@@ -1,0 +1,22 @@
+# --- Core Flask Framework ---
+Flask==3.0.3
+
+# --- Cross-Origin Access (Frontend JS <-> Backend API) ---
+Flask-Cors==4.0.1
+
+# --- ORM for SQLite and DB Management ---
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.36
+
+# --- Authentication / Login Session Management ---
+Flask-Login==0.6.3
+
+# --- Environment Variables (optional but clean for configs) ---
+python-dotenv==1.0.1
+
+# --- Development Tools (optional but helpful) ---
+Werkzeug==3.0.4
+itsdangerous==2.2.0
+Jinja2==3.1.4
+
+Flask-Mail

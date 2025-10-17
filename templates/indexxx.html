@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
+  <title>2SE7EN FITNESS</title>
+  <link rel="stylesheet" href="../static/css/indexxx.css">
+  <link rel="stylesheet" href="../static/css/sub.css">
+  <link rel="stylesheet" href="../static/css/about.css">
+  <link rel="stylesheet" href="../static/css/getacoach.css">
+  <link rel="stylesheet" href="../static/css/cr7.css">
+  <style>
+  /* Banner */
+  #dynamicBanner {
+    background: linear-gradient(90deg, #ff6b6b, #f94d6a);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Enhanced Modal Styling */
+.modal-content {
+  background-color: #1e1e1e; /* Darker background */
+  border: 1px solid #333;
+  padding: 40px;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.modal-content p {
+  color: #a0a0a0;
+  margin-bottom: 30px;
+}
+
+/* Input field with icon */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0a0a0;
+}
+
+.input-group input {
+  padding-left: 45px; /* Make space for the icon */
+  background-color: #2c2c2e;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  display: none; /* Hidden by default */
+  text-align: right;
+  margin: -10px 0 15px 0;
+  font-size: 0.9rem;
+  color: #ff7e5f;
+  text-decoration: none;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Form Toggle Link */
+.toggle-form {
+  margin-top: 25px;
+  font-size: 0.9rem;
+}
+
+.toggle-form a {
+  color: #ff7e5f;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.toggle-form a:hover {
+  text-decoration: underline;
+}
+
+  /* Buttons */
+  button, input[type="submit"] {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover, input[type="submit"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  /* Auth modal submit button */
+  #submitBtn {
+    width: 100%;
+    margin-top: 10px;
+    gap: 0.2rem;
+  }
+
+  #signupBtn {
+    margin: 35px;
+  }
+
+  .section-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #fa3403, #eb6804);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.section-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+footer {
+  background: linear-gradient(135deg, #0a0d10 0%, #151923 100%);
+  border-top: 1px solid rgba(255, 59, 48, 0.1);
+  padding: 80px 20px 40px;
+  margin-top: 100px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  footer {
+    padding: 60px 20px 30px;
+  }
+}
+
+.footer-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  color: var(--text);
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-section h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--brand);
+  border-radius: 2px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  transition: all 0.3s ease;
+}
+
+.footer-section a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.footer-section a:hover {
+  color: var(--brand);
+  padding-left: 4px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.contact-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 59, 48, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.contact-info-item p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-info-item p.label {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.contact-info-item p.value {
+  color: var(--text);
+  margin-top: 2px;
+}
+
+/* Divider */
+.footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 40px;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.footer-bottom p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-bottom a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: var(--brand);
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 59, 48, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.social-links a:hover {
+  background: var(--brand);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.opening-hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.hours-item {
+  background: rgba(255, 59, 48, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 3px solid var(--brand);
+}
+
+.hours-item .day {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.hours-item .time {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .table-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .table-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .table-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .class-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 25px 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .class-filters li {
+            list-style: none;
+        }
+        
+        .class-filters a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+        }
+        
+        .class-filters a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .class-filters a.active {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: white;
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            padding: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 18px 15px;
+            text-align: center;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            font-weight: 700;
+            color: #1a2a6c;
+        }
+        
+        tr:first-child th {
+            background-color: #1a2a6c;
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        tr th:first-child {
+            background-color: #b21f1f;
+            color: white;
+        }
+        
+        td {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        td:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .class-cardio {
+            background-color: rgba(26, 115, 232, 0.1);
+            border-left: 4px solid #1a73e8;
+        }
+        
+        .class-crossfit {
+            background-color: rgba(52, 168, 83, 0.1);
+            border-left: 4px solid #34a853;
+        }
+        
+        .class-powerlifting {
+            background-color: rgba(251, 188, 5, 0.1);
+            border-left: 4px solid #fbbc05;
+        }
+        
+        span {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .time-slot {
+            font-weight: 600;
+            color: #b21f1f;
+        }
+        
+        .empty-cell {
+            background-color: #f8f9fa;
+        }
+        
+        .instructor {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .class-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .badge-cardio {
+            background-color: #1a73e8;
+            color: white;
+        }
+        
+        .badge-crossfit {
+            background-color: #34a853;
+            color: white;
+        }
+        
+        .badge-powerlifting {
+            background-color: #fbbc05;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .class-filters {
+                padding: 15px 10px;
+            }
+            
+            .class-filters a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .table-header {
+                padding: 20px 15px;
+            }
+            
+            .table-header h1 {
+                font-size: 2rem;
+            }
+            
+            .table-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .class-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .class-filters a {
+                width: 80%;
+                text-align: center;
+            }
+        }
+
+        #memberSection {
+      background-color: #181818;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      margin: 30px auto;
+      display: none;
+      color: #eaeaea;
+    }
+
+    #guestSection {
+      background-color: #141414;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      margin: 30px auto;
+      color: #eaeaea;
+    }
+
+</style>
+
+</head>
+  
+<body>
+
+<div class="hero-wrapper">
+
+  <div class="hero-background">
+    <div class="topnav">
+      <a href="" class="active">Home</a>
+      <a href="{{ url_for('getacoach') }}" class="protected-link">Get A Coach</a>
+      <a href="{{ url_for('cr7') }}">27ATHX</a>
+      <a href="{{ url_for('sub') }}" class="protected-link">Subscription</a>
+      <a href="{{ url_for('about') }}">About us</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div id="dynamicBanner" style="padding:10px; background:#f0f0f0; color: black; text-align:center;">
+      Welcome! Sign up or log in to unlock your benefits.
+    </div>
+
+
+    <div class="main">
+      <h1>2SE7EN FITNESS</h1>
+      <div class="center">
+        <h2>Gym & Fitness Center</h2>
+        <h1>All your needs at 1 place</h1>
+        <button id="authBtn">Sign Up</button>
+      </div>
+    </div>
+  </div>
+ 
+
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modalTitle">Create Account</h2>
+    <p id="modalSubtitle">Start your fitness journey with us today!</p>
+    
+    <form id="authForm">
+      <div class="input-group" id="nameInputGroup">
+        <i class="icon">👤</i>
+        <input type="text" placeholder="Full Name" required id="nameField">
+      </div>
+      
+      <div class="input-group">
+        <i class="icon">✉️</i>
+        <input type="email" placeholder="Email Address" required>
+      </div>
+      
+      <div class="input-group">
+        <i class="icon">🔒</i>
+        <input type="password" placeholder="Password" required>
+      </div>
+      
+      <a href="#" id="forgotPasswordLink" class="forgot-password">Forgot Password?</a>
+      
+      <button type="submit" id="submitBtn">Create Account</button>
+    </form>
+    
+    <p class="toggle-form">
+      <span id="toggleText">Already have an account?</span>
+      <a href="#" id="toggleLink">Login</a>
+    </p>
+  </div>
+</div>
+
+
+  <div class="section">
+  <div class="left">
+    <h1>Strength Training</h1>
+    <p>Strength training isn’t just about building muscle — it’s about building resilience, discipline, and confidence. Every rep is a reminder that you're capable of more than you think.</p>
+    <a href="{{ url_for('strength_training') }}" class="section-btn protected-link">Join now</a>
+  </div>
+  <div class="right">
+    <h1>Body Building</h1>
+    <p>Bodybuilding is more than a sport — it’s a lifestyle of discipline, dedication, and relentless pursuit of growth. It’s sculpting your physique rep by rep, meal by meal, day after day.</p>
+    <a href="{{ url_for('body_building') }}" class="section-btn">Join Now</a>
+  </div>
+</div>
+<!-- Guest Section -->
+  <section id="guestSection">
+    <h2>Start Your Fitness Journey!</h2>
+    <p>Join our fitness family today and get your first week free 💪</p>
+    <a href="{{ url_for('sub') }}" class="section-btn">View Membership Plans</a>
+  </section>
+
+  <!-- Member Section -->
+  <section id="memberSection">
+    <h2>Welcome to Your Fitness Dashboard</h2>
+    <p>Track your progress, manage your workouts, and explore premium plans.</p>
+    <a href="{{ url_for('dashboard') }}" class="section-btn">Go to Dashboard</a>
+  </section>
+
+
+<section class="about">
+  <div class="left">
+    <img src="../static/img/grp.jpg.jpg" alt="Gym Group">
+  </div>
+  <div class="right">
+    <h1>10 Years Experience</h1>
+    <p>"A decade of dedication, one rep at a time."</p>
+    <div class="feature">
+      <img src="../static/img/lift1.jpg" alt="Certified Gym">
+      <h2>Certified GYM Center</h2>
+      <p>World-class facilities designed to help you achieve your best!</p>
+    </div>
+    <div class="feature">
+      <img src="../static/img/award.jpg" alt="Award">
+      <h2>Award Winning</h2>
+      <p>Recognized for dedication and results in transforming lives through fitness.</p>
+    </div>
+  </div>
+</section>
+
+
+  <div class="three">
+    <div class="left">
+      <img src="../static/img/icon1.png" alt="Progression">
+      <h2>Progression</h2>
+      <p>Progressive overload is key to gym progression. Focus on compound exercises like squats, deadlifts, and bench press.</p>
+    </div>
+    <div class="middle">
+      <img src="../static/img/icon2.png" alt="Workout">
+      <h2>Workout</h2>
+      <p>Nutrition and recovery are just as important as training. Fuel your body right and rest well for maximum results.</p>
+    </div>
+    <div class="right">
+      <img src="../static/img/icon3.png" alt="Nutrition">
+      <h2>Nutrition</h2>
+      <p>Balanced nutrition with protein, carbs, and healthy fats fuels recovery and results.</p>
+    </div>
+  </div>
+
+<div class="subscribe">
+  <h1>Subscribe Our Newsletter</h1>
+  <p>Subscribe and get our latest article in your inbox</p>
+  <form id="subscribeForm">
+    <input type="email" placeholder="Your Email" id="subscriberEmail" required />
+    <input type="submit" value="Subscribe" />
+  </form>
+  <p id="subscribeMessage" style="color:green; display:none;"></p>
+</div>
+
+      <div class="container">
+        <div class="table-header">
+            <h2>Gym Class Timetable</h2>
+            <h1>Working Hours and Class Time</h1>
+            <p>Find your perfect workout schedule. Filter by class type to see specific sessions.</p>
+        </div>
+        
+        <ul class="class-filters">
+            <li><a href="#" class="filter-btn active" data-filter="all">All Classes</a></li>
+            <li><a href="#" class="filter-btn" data-filter="cardio">Cardio</a></li>
+            <li><a href="#" class="filter-btn" data-filter="crossfit">CrossFit</a></li>
+            <li><a href="#" class="filter-btn" data-filter="powerlifting">Powerlifting</a></li>
+        </ul>
+        
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+                <tr>
+                    <th class="time-slot">5:30am-7:30am</th>
+                    <td class="class-cardio">
+                        <span>Cardio</span>
+                        Rahul Duha
+                        <div class="class-badge badge-cardio">High Intensity</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                    <td class="class-crossfit">
+                        <span>CrossFit</span>
+                        Parvi Singh
+                        <div class="class-badge badge-crossfit">Strength & Conditioning</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                    <td class="class-powerlifting">
+                        <span>Powerlifting</span>
+                        Jonathan
+                        <div class="class-badge badge-powerlifting">Heavy Weights</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <th class="time-slot">9:30am-11:30am</th>
+                    <td class="empty-cell"></td>
+                    <td class="class-cardio">
+                        <span>Cardio</span>
+                        Rahul Duha
+                        <div class="class-badge badge-cardio">High Intensity</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                    <td class="class-crossfit">
+                        <span>CrossFit</span>
+                        Parvi Singh
+                        <div class="class-badge badge-crossfit">Strength & Conditioning</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                    <td class="class-powerlifting">
+                        <span>Powerlifting</span>
+                        Jonathan
+                        <div class="class-badge badge-powerlifting">Heavy Weights</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                </tr>
+                <tr>
+                    <th class="time-slot">5:30pm-7:30pm</th>
+                    <td class="class-cardio">
+                        <span>Cardio</span>
+                        Rahul Duha
+                        <div class="class-badge badge-cardio">High Intensity</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                    <td class="empty-cell"></td>
+                    <td class="class-crossfit">
+                        <span>CrossFit</span>
+                        Parvi Singh
+                        <div class="class-badge badge-crossfit">Strength & Conditioning</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                    <td class="class-powerlifting">
+                        <span>Powerlifting</span>
+                        Jonathan
+                        <div class="class-badge badge-powerlifting">Heavy Weights</div>
+                    </td>
+                    <td class="empty-cell"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+ <div class="bmi">
+    <div class="left">
+      <h2>Body Mass Index</h2>
+      <h1>What is BMI?</h1>
+      <p>BMI (Body Mass Index) is a quick measure that uses your height and weight to estimate if you’re underweight, normal, overweight, or obese.</p>
+    </div>
+    <div class="right">
+      <h1>Calculate Your BMI</h1>
+      <form name="bodymass">
+        <input type="text" placeholder="Weight (KG)" name="w" />
+        <input type="text" placeholder="Height (CM)" name="h" />
+        <input type="text" placeholder="Age" />
+        <select>
+          <option value="">Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <input type="button" value="Calculate" onclick="bb();">
+      </form>
+    </div>
+  </div>
+
+
+ <div class="trainer">
+  <h2>Our Trainers</h2>
+  <h1>Meet Our Expert Trainers</h1>
+  <div class="trainer-gallery">
+    <div class="trainer-img">
+      <img src="../static/img/bq.jpg" alt="Jonathan">
+      <h3>Jonathan</h3>
+    </div>
+    <div class="trainer-img">
+      <img src="../static/img/bgg.jpg" alt="Payal">
+      <h3>Payal</h3>
+    </div>
+    <div class="trainer-img">
+      <img src="../static/img/bb.jpg" alt="Rahul Duha">
+      <h3>Rahul Duha</h3>
+    </div>
+    <div class="trainer-img">
+      <img src="../static/img/bgb.jpg" alt="Parvi Singh">
+      <h3>Parvi Singh</h3>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-content">
+      
+      <!-- Contact Section -->
+      <div class="footer-section">
+        <h3>Get In Touch</h3>
+        <div class="contact-info-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <p class="label">Address</p>
+            <p class="value">Road no.9, Seethamadhara, Vizag</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <p class="label">Phone</p>
+            <p class="value"><a href="tel:+919123456789">+91 9123456789</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <p class="label">Email</p>
+            <p class="value"><a href="mailto:123@example.com">123@example.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#coach">Get a Coach</a></li>
+          <li><a href="#athx">27 ATHX</a></li>
+          <li><a href="#subscription">Subscription</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Popular Links -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#blog">Blog & Tips</a></li>
+          <li><a href="#programs">Training Programs</a></li>
+          <li><a href="#nutrition">Nutrition Guide</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#support">Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Opening Hours -->
+      <div class="footer-section">
+        <h3>Opening Hours</h3>
+        <div class="opening-hours">
+          <div class="hours-item">
+            <div class="day">Monday - Saturday</div>
+            <div class="time">5:00 AM - 10:00 PM</div>
+          </div>
+          <div class="hours-item">
+            <div class="day">Sunday</div>
+            <div class="time">5:00 AM - 12:30 PM</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="footer-divider"></div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom" id="contact">
+      <div>
+        <p>&copy; 2025 2SE7EN FITNESS. All rights reserved.</p>
+      </div>
+      <div class="social-links">
+        <a href="#facebook" title="Facebook">f</a>
+        <a href="#instagram" title="Instagram">📷</a>
+        <a href="#twitter" title="Twitter">𝕏</a>
+        <a href="#linkedin" title="LinkedIn">in</a>
+      </div>
+      <div>
+        <p><a href="#privacy">Privacy Policy</a> • <a href="#terms">Terms of Service</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="{{ url_for('static', filename='js/bmii.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- 1. ELEMENT SELECTORS ---
+    const modal = document.getElementById("authModal");
+    const closeBtn = document.querySelector(".close");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const authForm = document.getElementById("authForm");
+    const nameField = document.getElementById("nameField");
+    const submitBtn = document.getElementById("submitBtn");
+    const banner = document.getElementById("dynamicBanner");
+    const guestSection = document.getElementById("guestSection");
+    const memberSection = document.getElementById("memberSection");
+    const subscribeForm = document.getElementById('subscribeForm');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const toggleLink = document.getElementById('toggleLink');
+    const toggleText = document.getElementById('toggleText');
+    const nameInputGroup = document.getElementById('nameInputGroup');
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+
+    // --- 2. DYNAMIC UI SETUP ---
+    const authParent = document.querySelector(".center");
+    const oldAuthBtn = document.getElementById("authBtn");
+    if (oldAuthBtn) oldAuthBtn.remove();
+
+    const signupBtn = document.createElement("button");
+    signupBtn.id = "signupBtn";
+    signupBtn.textContent = "Sign Up";
+
+    const loginBtn = document.createElement("button");
+    loginBtn.id = "loginBtn";
+    loginBtn.textContent = "Login";
+
+    const logoutBtn = document.createElement("button");
+    logoutBtn.id = "logoutBtn";
+    logoutBtn.textContent = "Logout";
+    Object.assign(logoutBtn.style, {
+      display: "none", marginLeft: "10px", padding: "8px 16px",
+      background: "#ff4444", color: "white", border: "none",
+      borderRadius: "5px", cursor: "pointer"
+    });
+    
+    authParent.appendChild(signupBtn);
+    authParent.appendChild(loginBtn);
+    authParent.appendChild(logoutBtn);
+
+    let currentAuthMode = "signup";
+
+    // --- 3. HELPER FUNCTIONS ---
+    function handleUserLogin(userName) {
+      banner.textContent = `Welcome back, ${userName}! 🎉`;
+      signupBtn.style.display = "none";
+      loginBtn.style.display = "none";
+      logoutBtn.style.display = "inline-block";
+      guestSection.style.display = "none";
+      memberSection.style.display = "block";
+      localStorage.setItem("user", userName);
+      setTimeout(() => memberSection.scrollIntoView({ behavior: "smooth" }), 300);
+    }
+
+    function handleUserLogout() {
+      localStorage.removeItem("user");
+      banner.textContent = "Welcome! Sign up or log in to unlock your benefits.";
+      signupBtn.style.display = "inline-block";
+      loginBtn.style.display = "inline-block";
+      logoutBtn.style.display = "none";
+      guestSection.style.display = "block";
+      memberSection.style.display = "none";
+      alert("You have been logged out.");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    const isUserLoggedIn = () => localStorage.getItem('user') !== null;
+
+    // --- 4. EVENT LISTENERS ---
+    function setModalMode(mode) {
+      currentAuthMode = mode;
+      const isLogin = mode === 'login';
+
+      modalTitle.textContent = isLogin ? "Welcome Back!" : "Create Account";
+      modalSubtitle.textContent = isLogin ? "Log in to access your dashboard." : "Start your fitness journey with us!";
+      nameInputGroup.style.display = isLogin ? 'none' : 'block';
+      nameField.required = !isLogin;
+      forgotPasswordLink.style.display = isLogin ? 'block' : 'none';
+      submitBtn.textContent = isLogin ? "Login" : "Create Account";
+      toggleText.textContent = isLogin ? "Don't have an account?" : "Already have an account?";
+      toggleLink.textContent = isLogin ? "Sign Up" : "Login";
+      modal.style.display = "flex";
+    }
+
+    signupBtn.addEventListener("click", () => setModalMode('signup'));
+    loginBtn.addEventListener("click", () => setModalMode('login'));
+    toggleLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      setModalMode(currentAuthMode === 'login' ? 'signup' : 'login');
+    });
+
+    closeBtn.onclick = () => (modal.style.display = "none");
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+
+    authForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+
+      const email = authForm.querySelector('input[type="email"]').value;
+      const password = authForm.querySelector('input[type="password"]').value;
+      const name = nameField.value;
+
+      const endpoint = currentAuthMode === "signup" ? "/api/signup" : "/api/login";
+      const payload = currentAuthMode === "signup" ? { name, email, password } : { email, password };
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          alert(data.message);
+          handleUserLogin(data.user); // Use the name from the backend response
+          modal.style.display = "none";
+        } else {
+          alert(`Error: ${data.error}`);
+        }
+      } catch (err) {
+        console.error("API Error:", err);
+        alert("A server error occurred. Please try again later.");
+      } finally {
+        authForm.reset();
+        submitBtn.disabled = false;
+        // The text content will be reset the next time the modal is opened
+      }
+    });
+
+    logoutBtn.addEventListener('click', handleUserLogout);
+
+    document.querySelectorAll('.protected-link').forEach(link => {
+      link.addEventListener('click', (event) => {
+        if (!isUserLoggedIn()) {
+          event.preventDefault();
+          alert('Please sign up or log in to access this feature!');
+          loginBtn.click();
+        }
+      });
+    });
+
+  (function(){
+    emailjs.init({ publicKey: "IUU0sjLD6eV_nryuA" });
+  })();
+
+  document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get name and email
+    const name = document.getElementById('subscriberName') 
+                  ? document.getElementById('subscriberName').value.trim()
+                  : localStorage.getItem('user') || "Subscriber";
+    const email = document.getElementById('subscriberEmail').value.trim();
+    if (!email) return;
+
+    // Generate current timestamp
+    const now = new Date();
+    const formattedTime = now.toLocaleString('en-US', {
+      dateStyle: 'long',
+      timeStyle: 'short'
+    });
+
+    // Send payload to EmailJS
+    emailjs.send("service_4a1x617", "template_q6d7ixu", {
+      subscriber_email: email,
+      name: name,
+      time: formattedTime
+    })
+    .then(() => {
+      const msg = document.getElementById('subscribeMessage');
+      msg.textContent = `✅ ${name}, you’ve successfully subscribed to 2SE7EN FITNESS!`;
+      msg.style.display = "block";
+      document.getElementById('subscribeForm').reset();
+    })
+    .catch((error) => {
+      console.error("EmailJS Error:", error);
+      alert("Failed to send email. Please try again later.");
+    });
+  });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const tableCells = document.querySelectorAll('td[class*="class-"]');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show/hide table cells based on filter
+                    tableCells.forEach(cell => {
+                        if (filter === 'all') {
+                            cell.style.display = 'table-cell';
+                        } else if (cell.classList.contains(`class-${filter}`)) {
+                            cell.style.display = 'table-cell';
+                        } else {
+                            cell.style.display = 'none';
+                        }
+                    });
+                    
+                    // Handle empty cells
+                    const emptyCells = document.querySelectorAll('.empty-cell');
+                    emptyCells.forEach(cell => {
+                        if (filter === 'all') {
+                            cell.style.display = 'table-cell';
+                        } else {
+                            cell.style.display = 'table-cell';
+                        }
+                    });
+                });
+            });
+        });
+
+    // --- 5. PAGE INITIALIZATION ---
+    const user = localStorage.getItem("user");
+    if (user) {
+      handleUserLogin(user);
+    } else {
+      guestSection.style.display = "block";
+      memberSection.style.display = "none";
+    }
+  });
+
+  // FORGOT PASSWORD LINK (DEMO)
+forgotPasswordLink.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevents the link from trying to navigate
+  alert('Password reset functionality is not implemented in this demo. Please sign up with a new account if needed!');
+});
+</script>
+
+</body>
+</html>

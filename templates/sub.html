@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2SE7EN FITNESS - Subscription</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1115; --card:#151923; --text:#e9eef8; --muted:#a9b3c4; --brand:#ff3b30; --ring: rgba(255, 59, 48, .25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif; 
+  background:var(--bg); 
+  color:var(--text);
+  line-height: 1.6;
+}
+
+.pricing{
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h2{
+  text-align: center;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+p.sub{
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 60px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.plan-grid{
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 40px;
+}
+
+@media(max-width: 900px){
+  .plan-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.plan{
+  background: var(--card);
+  border-radius: 16px;
+  padding: 40px 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(255, 59, 48, 0.1);
+}
+
+.plan:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 59, 48, 0.15);
+  border-color: rgba(255, 59, 48, 0.3);
+}
+
+.plan h3{
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.badge{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #ff3b30, #ff6b4a);
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.plan:not(:hover) .badge {
+  opacity: 0;
+}
+
+.price{
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 20px 0 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.amount{
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.period{
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.features {
+  margin: 20px 0 28px;
+}
+
+.features li {
+  list-style: none;
+  padding: 10px 0;
+  color: var(--muted);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.features li:before {
+  content: "✓";
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.cta{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 16px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cta:hover{
+  background: #ff5450;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 59, 48, 0.25);
+}
+
+.cta:active {
+  transform: translateY(0);
+}
+
+/* Modal */
+.modal{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content{
+  background: var(--card);
+  padding: 48px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(255, 59, 48, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal h3{
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.modal p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.close{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  font-size: 28px;
+  color: var(--text);
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: var(--brand);
+}
+
+#processing, #success, #paymentComplete{
+  display: none;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 59, 48, 0.15);
+  border-top: 4px solid #ff3b30;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 0.8s linear infinite;
+  margin: 24px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Green Check Animation */
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 4;
+  stroke: #4BB543;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #4BB543;
+  animation: scale .3s ease-in-out forwards;
+  margin: 0 auto 24px auto;
+  position: relative;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  stroke: #4BB543;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65,0,0.45,1) forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  stroke: #4BB543;
+  fill: none;
+  stroke-width: 4;
+  animation: stroke 0.3s cubic-bezier(0.65,0,0.45,1) 0.6s forwards;
+}
+
+@keyframes stroke {
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scale {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Tiny Confetti Particles */
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #FF3B30;
+  opacity: 0.8;
+  border-radius: 50%;
+  animation: confetti-fall 1s forwards;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity:1; }
+  100% { transform: translateY(120px) rotate(720deg); opacity:0; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="pricing">
+  <h2>Select Your Perfect Plan</h2>
+  <p class="sub">Flexible, transparent pricing designed for your fitness journey</p>
+
+  <div class="plan-grid">
+    <div class="plan" data-plan="Student" data-price="₹399/month">
+      <h3>Student</h3>
+      <p class="price"><span class="amount">₹399</span><span class="period">/mo</span></p>
+      <ul class="features">
+        <li>Full workout access</li>
+        <li>Mobile app included</li>
+        <li>Basic progress tracking</li>
+      </ul>
+      <button class="cta subscribeBtn">Subscribe Now</button>
+    </div>
+    <div class="plan" data-plan="Family" data-price="₹999/month">
+      <span class="badge">Best Value</span>
+      <h3>Family</h3>
+      <p class="price"><span class="amount">₹999</span><span class="period">/mo</span></p>
+      <ul class="features">
+        <li>Up to 5 members</li>
+        <li>Personalized coaching</li>
+        <li>Advanced analytics</li>
+        <li>Priority support</li>
+      </ul>
+      <button class="cta subscribeBtn">Subscribe Now</button>
+    </div>
+    <div class="plan" data-plan="Individual" data-price="₹699/month">
+      <h3>Individual</h3>
+      <p class="price"><span class="amount">₹699</span><span class="period">/mo</span></p>
+      <ul class="features">
+        <li>Unlimited workouts</li>
+        <li>Custom meal plans</li>
+        <li>Performance metrics</li>
+      </ul>
+      <button class="cta subscribeBtn">Subscribe Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="paymentModal">
+  <div class="modal-content">
+    <button class="close" id="closeModal">&times;</button>
+
+    <!-- Step 1: Summary -->
+    <div id="summary">
+      <h3>Confirm Your Plan</h3>
+      <p id="planName">Plan: </p>
+      <p id="planAmount">Amount: </p>
+      <button class="cta" id="proceedBtn">Proceed to Pay</button>
+    </div>
+
+    <!-- Step 2: Processing -->
+    <div id="processing">
+      <h3>Processing Payment...</h3>
+      <div class="spinner"></div>
+      <p id="processingInfo"></p>
+    </div>
+
+    <!-- Step 3: Payment Completed (Confirm) -->
+    <div id="paymentComplete">
+      <h3>Payment Processed</h3>
+      <p id="paymentCompleteInfo">Payment processed successfully. Please click below to confirm your subscription.</p>
+      <button class="cta" id="verifyBtn">Confirm Payment</button>
+    </div>
+
+    <!-- Step 4: Success -->
+    <div id="success">
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark__check" fill="none" d="M14 27l7 7 17-17"/>
+      </svg>
+      <h3>Subscription Successful!</h3>
+      <p id="successInfo"></p>
+      <button class="cta" id="closeSuccess">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const subscribeBtns = document.querySelectorAll('.subscribeBtn');
+const modal = document.getElementById('paymentModal');
+const closeModal = document.getElementById('closeModal');
+const proceedBtn = document.getElementById('proceedBtn');
+const summary = document.getElementById('summary');
+const processing = document.getElementById('processing');
+const success = document.getElementById('success');
+const planNameEl = document.getElementById('planName');
+const planAmountEl = document.getElementById('planAmount');
+const processingInfo = document.getElementById('processingInfo');
+const successInfo = document.getElementById('successInfo');
+const closeSuccess = document.getElementById('closeSuccess');
+const paymentComplete = document.getElementById('paymentComplete');
+const verifyBtn = document.getElementById('verifyBtn');
+
+let selectedPlan = {name:'', amount:'', order_id:'', amountInPaise:0};
+
+subscribeBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const parent = btn.closest('.plan');
+    selectedPlan.name = parent.dataset.plan;
+    selectedPlan.amount = parent.dataset.price;
+    planNameEl.textContent = `Plan: ${selectedPlan.name.charAt(0).toUpperCase() + selectedPlan.name.slice(1)}`;
+    planAmountEl.textContent = `Amount: ${selectedPlan.amount}`;
+    summary.style.display='block';
+    processing.style.display='none';
+    paymentComplete.style.display='none';
+    success.style.display='none';
+    modal.style.display='flex';
+  });
+});
+
+proceedBtn.addEventListener('click', async ()=>{
+  summary.style.display='none';
+  processing.style.display='block';
+  paymentComplete.style.display='none';
+  success.style.display='none';
+  processingInfo.textContent = `Processing your payment...`;
+
+  try {
+    const resOrder = await fetch('/api/create_order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: selectedPlan.name })
+    });
+    const orderData = await resOrder.json();
+
+    if(!(resOrder.ok && orderData.ok)){
+      processing.style.display='none';
+      alert(orderData.error || 'Order creation failed.');
+      return;
+    }
+
+    selectedPlan.order_id = orderData.order_id;
+    selectedPlan.amountInPaise = orderData.amount;
+
+    // Simulate processing delay
+    setTimeout(()=>{
+      processing.style.display='none';
+      paymentComplete.style.display='block';
+      verifyBtn.disabled = false;
+      paymentComplete.querySelector('#paymentCompleteInfo').textContent =
+        "Payment processed successfully. Please click below to confirm your subscription.";
+    }, 2000);
+
+  } catch(err){
+    processing.style.display='none';
+    alert('Server error. Please try again.');
+    console.error(err);
+  }
+});
+
+verifyBtn.addEventListener('click', async ()=>{
+  if(!selectedPlan.order_id){
+    alert('No order to verify.');
+    return;
+  }
+
+  paymentComplete.style.display='none';
+  processing.style.display='block';
+  processingInfo.textContent = 'Verifying your payment...';
+
+  try {
+    const resVerify = await fetch('/api/verify_payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ order_id: selectedPlan.order_id })
+    });
+    const verifyData = await resVerify.json();
+
+    if(resVerify.ok && verifyData.ok){
+      processing.style.display='none';
+      success.style.display='block';
+      const displayId = verifyData.payment_id || selectedPlan.order_id;
+      const amountHuman = selectedPlan.amountInPaise ? `₹${selectedPlan.amountInPaise/100}` : selectedPlan.amount;
+      successInfo.innerHTML = `
+        <strong>Your subscription is now active!</strong><br>
+        Payment ID: ${displayId}<br>
+        Amount Paid: ${amountHuman}
+      `;
+    } else {
+      processing.style.display='none';
+      alert(verifyData.error || 'Payment verification failed.');
+    }
+  } catch(err){
+    processing.style.display='none';
+    alert('Server error during verification. Try again.');
+    console.error(err);
+  }
+});
+
+closeModal.addEventListener('click',()=> modal.style.display='none');
+closeSuccess.addEventListener('click',()=> modal.style.display='none');
+window.addEventListener('click', e => { if(e.target===modal) modal.style.display='none'; });
+</script>
+
+</body>
+</html>
